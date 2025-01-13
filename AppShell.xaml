@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GorselProgOdev3.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GorselProgOdev3"
+    Shell.FlyoutBehavior="Flyout"
+    Title="GorselProgOdev3">
+    
+    <ShellContent
+        Title="Ana Sayfa"
+        ContentTemplate="{DataTemplate local:HomePage}"
+        Route="HomePage" />
+
+
+    <ShellContent
+        Title="Döviz Kurları"
+        ContentTemplate="{DataTemplate local:CurrencyPage}"
+        Route="CurrencyPage"
+        />
+
+    <ShellContent
+        Title="Hava Durumu"
+        ContentTemplate="{DataTemplate local:WeatherPage}"
+        Route="WeatherPage"
+        />
+
+    <ShellContent
+        Title="Haberler"
+        ContentTemplate="{DataTemplate local:NewsPage}"
+        Route="NewsPage"
+        />
+    
+    <ShellContent
+        Title="Yapılacaklar"
+        ContentTemplate="{DataTemplate local:TodoPage}"
+        Route="TodoPage"
+        />
+
+
+</Shell>

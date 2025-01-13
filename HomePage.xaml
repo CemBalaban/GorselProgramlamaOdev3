@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GorselProgOdev3.HomePage"
+             Title="HomePage">
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="30,0"
+        Margin="20"
+        Spacing="25">
+            <Label
+            Text="ODEV-2"
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level4" />
+            <Image
+            Source="cmblbn.jpeg"
+            HeightRequest="185"
+            Aspect="AspectFit"
+            SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Label
+            Text="Cem Balaban"
+            Style="{StaticResource Headline}"
+            SemanticProperties.HeadingLevel="Level1" />
+            <Label
+            Text="20010310034"
+            Style="{StaticResource Headline}"
+            SemanticProperties.HeadingLevel="Level2" />
+
+            <Label
+            Text="Bartın Üniversitesi Bilgisayar Mühendisliği"
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level3"
+            SemanticProperties.Description="bartinuni" />
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

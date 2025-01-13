@@ -1,0 +1,81 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GorselProgOdev3.TodoPage"
+             Title="Yapılacaklar Listesi">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ekle" IconImageSource="add1.png" Clicked="ShowAddTaskForm" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <!-- Görev Ekleme Formu -->
+        <StackLayout Padding="20" Spacing="15" x:Name="TaskForm" IsVisible="False">
+            <Entry x:Name="txtTask" Placeholder="Görev Adı" />
+            <Editor x:Name="txtDetails" Placeholder="Detaylar" HeightRequest="100" />
+            <DatePicker x:Name="datePicker" />
+            <TimePicker x:Name="timePicker" />
+            <Button Text="Kaydet" Clicked="Save_Clicked" />
+            <Button Text="İptal" Clicked="Cancel_Clicked" />
+        </StackLayout>
+
+        <!-- Görev Listesi -->
+        <CollectionView x:Name="ctrlTodoList" ItemsSource="{Binding ListTodo}" SelectionMode="Single" Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    IconImageSource="delete_icon.png"
+                                    Text="Sil"
+                                    CommandParameter="{Binding ID}" 
+                                    Clicked="OnDeleteTodoClicked" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                        IconImageSource="edit1.png"
+                        Clicked="EditTodo_Click"
+                        CommandParameter="{Binding ID}" />
+                                <SwipeItem 
+                        IconImageSource="edit1.png"
+                        Text="Detay"
+                        Clicked="EditDetails_Click"
+                        CommandParameter="{Binding ID}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="10" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+                            <!-- Görev Adı -->
+                            <Label Text="{Binding Task}" 
+                       Grid.Row="0" Grid.Column="0" 
+                       FontAttributes="Bold" 
+                       VerticalOptions="Center" />
+
+                            <!-- Görev Tamamlanma Durumu -->
+                            <CheckBox IsChecked="{Binding IsDone}" x:Name="Check"
+                          Grid.Row="0" Grid.Column="1" 
+                          VerticalOptions="Center" />
+
+                            <!-- Görev Detayları -->
+                            <Label Text="{Binding Detail}" 
+                       Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                       FontSize="Small" TextColor="Gray" 
+                       LineBreakMode="WordWrap" />
+
+                            <!-- Tarih ve Saat -->
+                            <Label Text="{Binding Date}" 
+                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
+                       FontSize="Small" TextColor="DarkGray" />
+                            
+                            <Label Text="{Binding Time}" 
+                       Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
+                       FontSize="Small" TextColor="DarkGray" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

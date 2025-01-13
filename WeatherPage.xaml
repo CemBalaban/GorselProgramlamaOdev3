@@ -1,0 +1,62 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GorselProgOdev3"
+             x:Class="GorselProgOdev3.WeatherPage">
+    <ScrollView>
+    <StackLayout Padding="20">
+        <!-- Şehir Adı Giriş Alanı -->
+        <Entry x:Name="CityEntry"
+               Placeholder="Şehir adını girin"
+               HorizontalOptions="FillAndExpand" />
+
+        <!-- Şehir Ekle Butonu -->
+        <Button Text="Şehri Ekle"
+                Clicked="OnAddCityClicked"
+                HorizontalOptions="Center"
+                Margin="10"/>
+
+        <!-- Eklenen Şehirlerin Listesi -->
+        <CollectionView x:Name="CityListView"
+                ItemsSource="{Binding Cities}"
+                SelectionMode="None"
+                Margin="0,10,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" HeightRequest="150">
+                        <!-- Resim Arka Planı -->
+                        <Image Source="{Binding WeatherUrl}"
+                       Aspect="AspectFit"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Grid.Row="0" Grid.Column="0" />
+
+                        <!-- Şehir Adı (Sol Üst) -->
+                        <Label Text="{Binding Name}"
+                       FontSize="16"
+                       TextColor="White"
+                       BackgroundColor="#80000000"
+                       Padding="5"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Margin="5" />
+
+                        <!-- Silme Simgesi (Sağ Üst) -->
+                        <ImageButton Source="delete_icon.png"
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:WeatherPage}}, Path=DeleteCityCommand}"
+                             CommandParameter="{Binding Name}"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             VerticalOptions="Start"
+                             HorizontalOptions="End"
+                             Margin="5"
+                             BackgroundColor="Transparent" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Hava Durumu Resim Gösterim Alanı -->
+
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
